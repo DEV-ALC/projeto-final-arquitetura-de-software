@@ -1,0 +1,39 @@
+{
+  "name": "projeto-final-arquitetura-de-software",
+  "version": "1.0.0",
+  "description": "Projeto final de Arquitetura de software",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "prisma:init": "prisma init --datasource-provider sqlite",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DEV-ALC/projeto-final-arquitetura-de-software.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DEV-ALC/projeto-final-arquitetura-de-software/issues"
+  },
+  "homepage": "https://github.com/DEV-ALC/projeto-final-arquitetura-de-software#readme",
+  "devDependencies": {
+    "@types/node": "^25.0.10",
+    "@vitest/coverage-v8": "^4.0.18",
+    "dotenv": "^17.2.3",
+    "prisma": "^7.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.3.0"
+  }
+}
