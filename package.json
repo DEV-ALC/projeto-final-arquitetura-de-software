@@ -2,7 +2,8 @@
   "name": "projeto-final-arquitetura-de-software",
   "version": "1.0.0",
   "description": "Projeto final de Arquitetura de software",
-  "main": "index.js",
+  "main": "main.ts",
+  "type": "module",
   "scripts": {
     "dev": "ts-node src/index.ts",
     "build": "tsc",
@@ -10,6 +11,7 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "prisma:init": "prisma init --datasource-provider sqlite",
+    "prisma:seed": "ts-node prisma/seed.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev"
   },
@@ -34,6 +36,7 @@
     "vitest": "^4.0.18"
   },
   "dependencies": {
-    "@prisma/client": "^7.3.0"
+    "@prisma/client": "^7.3.0",
+    "inversify": "^7.11.0"
   }
 }
