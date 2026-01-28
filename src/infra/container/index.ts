@@ -16,4 +16,4 @@ container
   .to(PrismaRentalRepository)
   .inSingletonScope();
 
-export default container;
+export { container };

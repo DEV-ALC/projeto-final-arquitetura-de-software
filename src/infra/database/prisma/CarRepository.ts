@@ -1,4 +1,3 @@
-// src/infra/database/prisma/PrismaCarRepository.ts
 import { injectable } from "inversify";
 import { ICarRepository } from "../../../domain/repositories/ICarRepository";
 import { Car } from "../../../domain/entities/Car";

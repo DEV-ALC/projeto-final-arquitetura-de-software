@@ -11,3 +11,6 @@ CREATE TABLE "cars" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "plate" TEXT NOT NULL
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "cars_plate_key" ON "cars"("plate");

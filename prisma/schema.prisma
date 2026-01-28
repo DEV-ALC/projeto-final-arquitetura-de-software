@@ -17,5 +17,5 @@ model rentals {
 
 model cars {
   id         String   @id @default(cuid())
-  plate      String
+  plate      String   @unique
 }

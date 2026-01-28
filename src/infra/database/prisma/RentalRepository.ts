@@ -7,7 +7,7 @@ import { PrismaClient } from "@prisma/client";
 export class PrismaRentalRepository implements IRentalRepository {
   constructor(private prisma = new PrismaClient()) {}
 
-  async findOpenRentalByCarId(plate: string): Promise<Rental | null> {
+  async findOpenRentalByPlate(plate: string): Promise<Rental | null> {
     const rental = await this.prisma.rentals.findFirst({
       where: { plate },
     });
@@ -33,14 +33,20 @@ export class PrismaRentalRepository implements IRentalRepository {
     );
   }
 
-  async create(rental: Rental): Promise<void> {
-    await this.prisma.rentals.create({
+  async create(rental: Rental): Promise<Rental> {
+    const created = await this.prisma.rentals.create({
       data: {
-        id: rental.id,
         plate: rental.plate,
         idUser: rental.idUser,
         dataPrevista: rental.dataPrevista,
       },
     });
+
+    return new Rental(
+      created.id,
+      created.plate,
+      created.idUser,
+      created.dataPrevista,
+    );
   }
 }
