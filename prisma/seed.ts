@@ -4,8 +4,14 @@ const prisma = new PrismaClient();
 
 async function main() {
   const carsData = [
-    { id: "1", plate: "ABC1234" },
-    { id: "2", plate: "XYZ5678" },
+    { plate: "ABC1234" },
+    { plate: "ABC5678" },
+    { plate: "DEF1234" },
+    { plate: "DEF5678" },
+    { plate: "HIJ1234" },
+    { plate: "HIJ5678" },
+    { plate: "KLM1234" },
+    { plate: "KLM5678" },
   ];
 
   for (const car of carsData) {

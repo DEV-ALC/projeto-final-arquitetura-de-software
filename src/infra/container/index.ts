@@ -4,6 +4,7 @@ import { IRentalRepository } from "../../domain/repositories/IRentalRepository";
 import { ICarRepository } from "../../domain/repositories/ICarRepository";
 import { PrismaCarRepository } from "../database/prisma/CarRepository";
 import { PrismaRentalRepository } from "../database/prisma/RentalRepository";
+import { CreateRentalUseCase } from "../../application/useCases/createRental/CreateRentalUseCase";
 
 const container = new Container();
 
@@ -15,5 +16,7 @@ container
   .bind<IRentalRepository>(TYPES.RentalRepository)
   .to(PrismaRentalRepository)
   .inSingletonScope();
+
+container.bind<CreateRentalUseCase>(CreateRentalUseCase).toSelf();
 
 export { container };

@@ -1,3 +1,4 @@
+import { injectable } from "inversify";
 import { Rental } from "../../../domain/entities/Rental";
 import { ICarRepository } from "../../../domain/repositories/ICarRepository";
 import { IRentalRepository } from "../../../domain/repositories/IRentalRepository";
@@ -5,6 +6,7 @@ import { TYPES } from "../../../infra/container/Types";
 import { CreateRentalDTO } from "./CreateRentalDTO";
 import { inject } from "inversify";
 
+@injectable()
 export class CreateRentalUseCase {
   constructor(
     @inject(TYPES.RentalRepository) private rentalRepository: IRentalRepository,
@@ -12,6 +14,7 @@ export class CreateRentalUseCase {
   ) {}
   async execute(dto: CreateRentalDTO) {
     const car = await this.carRepository.findByPlate(dto.plate);
+    console.log(car);
     if (!car) {
       throw new Error("O veiculo não existe na base");
     }
@@ -29,8 +32,12 @@ export class CreateRentalUseCase {
       throw new Error("O ususario ja tem um alugel ");
     }
 
+    if (dto.dataPrevista.getTime() - Date.now() < 1000 * 60 * 60 * 24) {
+      throw new Error("A duraçao minima do aluguel é 24 horas");
+    }
+
     const rental = new Rental("", dto.plate, dto.idUser, dto.dataPrevista);
 
-    await this.rentalRepository.create(rental);
+    return this.rentalRepository.create(rental);
   }
 }
