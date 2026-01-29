@@ -12,4 +12,12 @@ export class PrismaCarRepository implements ICarRepository {
     if (!car) return null;
     return new Car(car.id, car.plate);
   }
+
+  async create(car: Car): Promise<void> {
+    await this.prisma.cars.create({
+      data: {
+        plate: car.plate,
+      },
+    });
+  }
 }

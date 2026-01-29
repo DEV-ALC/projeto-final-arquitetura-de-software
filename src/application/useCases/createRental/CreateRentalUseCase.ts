@@ -14,13 +14,14 @@ export class CreateRentalUseCase {
   ) {}
   async execute(dto: CreateRentalDTO) {
     const car = await this.carRepository.findByPlate(dto.plate);
-    console.log(car);
     if (!car) {
-      throw new Error("O veiculo não existe na base");
+      await this.carRepository.create({ id: "", plate: dto.plate });
     }
+
     const existplate = await this.rentalRepository.findOpenRentalByPlate(
       dto.plate,
     );
+
     if (!!existplate) {
       throw new Error("O veiculo já esta alugado");
     }
