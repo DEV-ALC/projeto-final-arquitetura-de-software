@@ -1,11 +1,12 @@
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 import { ICarRepository } from "../../../domain/repositories/ICarRepository";
 import { Car } from "../../../domain/entities/Car";
 import { PrismaClient } from "@prisma/client";
+import { TYPES } from "../../container/Types";
 
 @injectable()
 export class PrismaCarRepository implements ICarRepository {
-  constructor(private prisma = new PrismaClient()) {}
+  constructor(@inject(TYPES.PrismaClient) private prisma: PrismaClient) {}
 
   async findByPlate(plate: string): Promise<Car | null> {
     const car = await this.prisma.cars.findUnique({ where: { plate } });

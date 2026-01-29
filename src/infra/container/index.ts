@@ -5,8 +5,13 @@ import { ICarRepository } from "../../domain/repositories/ICarRepository";
 import { PrismaCarRepository } from "../database/prisma/CarRepository";
 import { PrismaRentalRepository } from "../database/prisma/RentalRepository";
 import { CreateRentalUseCase } from "../../application/useCases/createRental/CreateRentalUseCase";
+import { PrismaClient } from "@prisma/client";
 
 const container = new Container();
+
+container
+  .bind<PrismaClient>(TYPES.PrismaClient)
+  .toConstantValue(new PrismaClient());
 
 container
   .bind<ICarRepository>(TYPES.CarRepository)
