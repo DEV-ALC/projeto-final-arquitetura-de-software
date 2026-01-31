@@ -21,19 +21,20 @@ export class CreateRentalUseCase {
     const existplate = await this.rentalRepository.findOpenRentalByPlate(
       dto.plate,
     );
-
     if (!!existplate) {
       throw new Error("O veiculo já esta alugado");
     }
+
     const existuser = await this.rentalRepository.findOpenRentalByUserId(
       dto.idUser,
     );
-
     if (!!existuser) {
-      throw new Error("O ususario ja tem um alugel ");
+      throw new Error("O usuario ja tem um alugel");
     }
 
-    if (dto.dataPrevista.getTime() - Date.now() < 1000 * 60 * 60 * 24) {
+    const agora = new Date();
+    const diferencaMs = dto.dataPrevista.getTime() - agora.getTime();
+    if (diferencaMs < 1000 * 60 * 60 * 24) {
       throw new Error("A duraçao minima do aluguel é 24 horas");
     }
 

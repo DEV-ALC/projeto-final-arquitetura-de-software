@@ -6,7 +6,6 @@ Projeto final de Arquitetura de software
 
 ```bash
 npm run prisma:init
-npm run prisma:migrate
 npm run prisma:generate
-npm run prisma:seed
+npm run prisma:migrate
 ```

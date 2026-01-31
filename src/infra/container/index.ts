@@ -2,8 +2,8 @@ import { Container } from "inversify";
 import { TYPES } from "./Types";
 import { IRentalRepository } from "../../domain/repositories/IRentalRepository";
 import { ICarRepository } from "../../domain/repositories/ICarRepository";
-import { PrismaCarRepository } from "../database/prisma/CarRepository";
-import { PrismaRentalRepository } from "../database/prisma/RentalRepository";
+import { PrismaCarRepository } from "../database/prisma/PrismaCarRepository";
+import { PrismaRentalRepository } from "../database/prisma/PrismaRentalRepository";
 import { CreateRentalUseCase } from "../../application/useCases/createRental/CreateRentalUseCase";
 import { PrismaClient } from "@prisma/client";
 
