@@ -1,6 +1,4 @@
-# projeto-final-arquitetura-de-software
-
-Projeto final de Arquitetura de software
+# Projeto Final Arquitetura De Software
 
 ### Configuração
 
@@ -10,11 +8,22 @@ Projeto final de Arquitetura de software
 DATABASE_URL="file:./dev.db"
 ```
 
-### Rodar o projeto
+### Inicializar o projeto
 
 ```bash
 npm i
 npm run prisma:generate
 npm run prisma:migrate
+```
+
+### Para Rodar os Testes
+
+```bash
+npm run test
+```
+
+### Para Testar a interface CLI
+
+```bash
 npx tsx src/adapters/cli/main.ts
 ```
