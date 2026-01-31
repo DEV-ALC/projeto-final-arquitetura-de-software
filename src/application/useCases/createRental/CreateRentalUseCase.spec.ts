@@ -18,7 +18,7 @@ describe("CreateRentalUseCase", () => {
       carRepository,
     );
   });
-  it("Deve cadastrar o carro e retornar Rental", async () => {
+  it("Deve cadastrar o aluguel e retornar ele", async () => {
     const dataPrevista = new Date(Date.now() + 1000 * 60 * 60 * 24 + 1000);
 
     const rental = await createRentalUseCase.execute({
